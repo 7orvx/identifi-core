@@ -12,13 +12,19 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 ### Execution Commands
 Run the following commands in your terminal from the root of the `identifi-core` directory:
 
-1. **Test the Full Cryptographic Cycle (Prover & Verifier):**
+1. Build the Rust cryptographic circuit into WebAssembly:
+  ```bash
+  wasm-pack build --target web
+
+  ```
+
+2. **Test the Full Cryptographic Cycle (Prover & Verifier):**
 ```bash
    npm run test:full
 
 ```
 
-2. **Test the Local Merkle Tree Proof Generation:**
+3. **Test the Local Merkle Tree Proof Generation:**
 
 ```bash
    npm run test:merkle
@@ -29,5 +35,4 @@ Run the following commands in your terminal from the root of the `identifi-core`
 
 ## 🛠️ Roadmap & Technology Stack Note
 
-* **Current Implementation:** Core cryptographic circuit written in Rust and compiled via `wasm-pack`. The current local benchmarking scripts are written in JavaScript/ESM (`.mjs`).
-* **Next Steps (TypeScript Migration):** As you will notice from the pre-compiled `.d.ts` files already available in the `/pkg` directory, **the entire IdentiFI SDK and ecosystem interfaces are actively being migrated to TypeScript (TS)**. This migration will enforce strict cryptographic type safety, seamless dApp integration, and clean developer workflows for upcoming features.
+* **Current Implementation:** Core cryptographic circuit written in Rust and compiled via `wasm-pack`. The benchmarking scripts are now fully migrated to TypeScript (TS) to enforce strict cryptographic type safety."
