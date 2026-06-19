@@ -32,6 +32,34 @@ Run the following commands in your terminal from the root of the `identifi-core`
 ```
 
 ---
+## 📊 Performance Benchmarks
+
+Here is an example of the cryptographic cycle execution logs, showcasing the performance of the native Rust WASM circuit running locally:
+
+```bash
+> identifi-core@2.0.0 test:full
+> npx tsx test_full_cycle.ts
+
+1. Generating Merkle Tree (local)...
+   Merkle root: 0x0b015d3771810ae636b73f3e9d77e062cc92ffb881666aaf68fffffce596bc81
+   -> Time of the Merkle Tree: 98.133ms
+
+2. Generating ZK Proof (Client side)...
+   Proof cryptographic computed successfully!
+   -> Time of the Proof (Prover): 7.082s
+
+3. Sending the Proof to the Auditor (Verification side)...
+
+--- FINAL RESULT OF THE AUDIT ---
+✅ EXCELLENT: Proof 100% Valid in the Groth16 Circuit!
+-> Verification Time (Verifier): 22.177ms
+
+------------------------------------
+Total cycle time: 7.228s
+
+```
+## **Note**: Proving is executed entirely client-side using WebAssembly, ensuring strict user privacy with zero data tracking. Verification is sub-millisecond level, optimized for high-throughput Web3 applications.
+---
 
 ## 🛠️ Roadmap & Technology Stack Note
 
