@@ -1,6 +1,6 @@
 {
   "name": "identifi-core",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The core cryptographic engine of the **IdentiFI Protocol**, a stateless, privacy-preserving authority layer built for Web3 and decentralized applications. This module features a high-performance ZK-SNARK circuit using Groth16, compiled natively from Rust to WebAssembly (WASM) to run blindingly fast client-side proving and local verification.",
   "main": "index.js",
   "directories": {
