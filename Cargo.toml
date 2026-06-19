@@ -1,0 +1,33 @@
+[package]
+name = "identifi-core"
+version = "2.0.0"
+edition = "2021"
+
+[lib]
+# Mantemos cdylib para o wasm-pack e adicionamos rlib para viabilizar testes unitários em Rust nativo
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+hex = "0.4"
+getrandom = { version = "0.2", features = ["js"] }
+
+# Mudamos tudo para 0.4.0 para sincronizar com o crates.io
+ark-ff = { version = "0.4.0", default-features = false }
+ark-ec = { version = "0.4.0", default-features = false }
+ark-relations = { version = "0.4.0", default-features = false }
+ark-r1cs-std = { version = "0.4.0", default-features = false }
+ark-bn254 = { version = "0.4.0", default-features = false, features = ["curve"] }
+ark-groth16 = { version = "0.4.0", default-features = false }
+ark-snark = { version = "0.4.0", default-features = false }
+ark-std = { version = "0.4.0", default-features = false, features = ["std"] }
+ark-serialize = { version = "0.4.0", default-features = false }
+ark-crypto-primitives = { version = "0.4.0", default-features = false, features = ["r1cs", "sponge", "crh"] }
+
+[profile.release]
+# Otimizações brutas de compilação para reduzir drasticamente o tamanho do arquivo .wasm 
+# e acelerar a velocidade de geração da prova Groth16 client-side.
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
